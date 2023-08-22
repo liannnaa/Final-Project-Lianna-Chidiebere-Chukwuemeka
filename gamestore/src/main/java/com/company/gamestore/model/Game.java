@@ -21,6 +21,10 @@ public class Game {
         return gameId;
     }
 
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -81,4 +85,5 @@ public class Game {
     public int hashCode() {
         return Objects.hash(gameId, title, esrbRating, description, price, studio, quantity);
     }
+
 }

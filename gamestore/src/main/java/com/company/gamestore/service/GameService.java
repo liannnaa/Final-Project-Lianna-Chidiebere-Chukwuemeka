@@ -3,15 +3,15 @@ package com.company.gamestore.service;
 import com.company.gamestore.model.Game;
 import com.company.gamestore.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class GameService {
 
-    private final GameRepository gameRepository;
+    private GameRepository gameRepository;
 
     @Autowired
     public GameService(GameRepository gameRepository) {
@@ -26,7 +26,7 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public Optional<Game> getGameById(Integer id) {
+    public Optional<Game> getGameById(int id) {
         return gameRepository.findById(id);
     }
 
@@ -42,7 +42,11 @@ public class GameService {
         return gameRepository.findByTitle(title);
     }
 
-    public void deleteGame(Integer id) {
+    public Game updateGame(Game game) {
+        return gameRepository.save(game);
+    }
+
+    public void deleteGame(int id) {
         gameRepository.deleteById(id);
     }
 }

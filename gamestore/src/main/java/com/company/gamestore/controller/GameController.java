@@ -7,17 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/games")
 public class GameController {
 
-    private final GameService gameService;
-
     @Autowired
-    public GameController(GameService gameService) {
-        this.gameService = gameService;
-    }
+    GameService gameService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,8 +28,8 @@ public class GameController {
     }
 
     @GetMapping("/{id}")
-    public Game getGameById(@PathVariable Integer id) {
-        return gameService.getGameById(id).orElseThrow(() -> new RuntimeException("Game not found"));
+    public Optional<Game> getGameById(@PathVariable int id) {
+        return gameService.getGameById(id);
     }
 
     @GetMapping("/studio/{studio}")
@@ -50,9 +47,14 @@ public class GameController {
         return gameService.findByTitle(title);
     }
 
+    @PutMapping
+    public Game updateGame(@RequestBody Game game) {
+        return gameService.updateGame(game);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteGame(@PathVariable Integer id) {
+    public void deleteGame(@PathVariable int id) {
         gameService.deleteGame(id);
     }
 }
