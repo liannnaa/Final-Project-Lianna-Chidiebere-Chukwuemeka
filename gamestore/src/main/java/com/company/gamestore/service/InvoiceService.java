@@ -3,9 +3,7 @@ package com.company.gamestore.service;
 import com.company.gamestore.model.Invoice;
 import com.company.gamestore.model.Tax;
 import com.company.gamestore.model.Fee;
-import com.company.gamestore.repository.InvoiceRepository;
-import com.company.gamestore.repository.TaxRepository;
-import com.company.gamestore.repository.FeeRepository;
+import com.company.gamestore.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +23,15 @@ public class InvoiceService {
     @Autowired
     private FeeRepository feeRepository;
 
+    @Autowired
+    private GameRepository gameRepository;
+
+    @Autowired
+    private ConsoleRepository consoleRepository;
+
+    @Autowired
+    private TshirtRepository tshirtRepository;
+
     // Method to create an invoice
     public Invoice createInvoice(Invoice invoice) {
         // Validation
@@ -32,10 +39,28 @@ public class InvoiceService {
             throw new IllegalArgumentException("Order quantity must be greater than zero.");
         }
 
-        // Placeholder for checking available inventory
-        // if (invoice.getQuantity() > availableInventory) {
-        //     throw new IllegalArgumentException("Order quantity exceeds available inventory.");
-        // }
+        // Checking available inventory based on itemType
+        int availableInventory = 0;
+        switch (invoice.getItemType()) {
+            case "Game":
+                availableInventory = gameRepository.findById(invoice.getItemId()).orElseThrow(() ->
+                        new IllegalArgumentException("Game with ID " + invoice.getItemId() + " not found.")).getQuantity();
+                break;
+            case "Console":
+                availableInventory = consoleRepository.findById(invoice.getItemId()).orElseThrow(() ->
+                        new IllegalArgumentException("Console with ID " + invoice.getItemId() + " not found.")).getQuantity();
+                break;
+            case "Tshirt":
+                availableInventory = tshirtRepository.findById(invoice.getItemId()).orElseThrow(() ->
+                        new IllegalArgumentException("Tshirt with ID " + invoice.getItemId() + " not found.")).getQuantity();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid item type provided.");
+        }
+
+        if (invoice.getQuantity() > availableInventory) {
+            throw new IllegalArgumentException("Order quantity exceeds available inventory.");
+        }
 
         Optional<Tax> taxRateOptional = taxRepository.findById(invoice.getState());
         if (!taxRateOptional.isPresent()) {
