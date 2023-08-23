@@ -26,7 +26,7 @@ public class GameController {
 
     @ExceptionHandler(InvalidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleInvalidGame(InvalidException ex) {
+    public String handleInvalid(InvalidException ex) {
         return ex.getMessage();
     }
 
