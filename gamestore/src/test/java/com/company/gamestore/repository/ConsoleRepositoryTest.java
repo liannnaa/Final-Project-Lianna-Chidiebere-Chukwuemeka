@@ -1,7 +1,6 @@
 package com.company.gamestore.repository;
 
 import com.company.gamestore.model.Console;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,8 @@ public class ConsoleRepositoryTest {
         console.setManufacturer("Test Manufacturer");
         console.setMemoryAmount("Test Amount");
         console.setProcessor("Test Processor");
-        console.setPrice(59.99);
-        console.setQuantity(10);
+        console.setPrice(1.00);
+        console.setQuantity(1);
         console = consoleRepo.save(console);
     }
 
@@ -80,8 +79,8 @@ public class ConsoleRepositoryTest {
         console2.setManufacturer("Test Manufacturer 2");
         console2.setMemoryAmount("Test Amount 2");
         console2.setProcessor("Test Processor 2");
-        console2.setPrice(69.99);
-        console2.setQuantity(20);
+        console2.setPrice(2.00);
+        console2.setQuantity(2);
         consoleRepo.save(console2);
 
         // Act

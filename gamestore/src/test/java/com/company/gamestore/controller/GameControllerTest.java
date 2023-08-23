@@ -37,11 +37,11 @@ public class GameControllerTest {
         game = new Game();
         game.setGameId(1);
         game.setTitle("Test Title");
-        game.setEsrbRating("E");
+        game.setEsrbRating("Test Rating");
         game.setDescription("Test Description");
-        game.setPrice(59.99);
+        game.setPrice(1.00);
         game.setStudio("Test Studio");
-        game.setQuantity(10);
+        game.setQuantity(1);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class GameControllerTest {
 
     @Test
     public void getGamesByStudioTest() throws Exception {
-        when(gameService.findByStudio("Test Studio")).thenReturn(Collections.singletonList(game));  // Correct method name
+        when(gameService.findByStudio("Test Studio")).thenReturn(Collections.singletonList(game));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/games/studio/{studio}", "Test Studio"))
@@ -107,4 +107,23 @@ public class GameControllerTest {
                 .andExpect(jsonPath("$[0].title").value("Test Title"));
     }
 
+    @Test
+    public void getGamesByEsrbRatingTest() throws Exception {
+        when(gameService.findByEsrbRating("Test Rating")).thenReturn(Collections.singletonList(game));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/games/rating/{rating}", "Test Rating"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].title").value("Test Title"));
+    }
+
+    @Test
+    public void getGamesByTitleTest() throws Exception {
+        when(gameService.findByTitle("Test Title")).thenReturn(Collections.singletonList(game));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/games/title/{title}", "Test Title"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].title").value("Test Title"));
+    }
 }
