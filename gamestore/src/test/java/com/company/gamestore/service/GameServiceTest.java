@@ -101,7 +101,6 @@ public class GameServiceTest {
 
     @Test
     public void testFindByStudio() {
-        // Setting up mock for findByStudio
         List<Game> studioGames = new ArrayList<>();
         studioGames.add(new Game());
         doReturn(studioGames).when(gameRepository).findByStudio("Test Studio");
@@ -112,7 +111,6 @@ public class GameServiceTest {
 
     @Test
     public void testFindByEsrbRating() {
-        // Setting up mock for findByEsrbRating
         List<Game> ratingGames = new ArrayList<>();
         ratingGames.add(new Game());
         doReturn(ratingGames).when(gameRepository).findByEsrbRating("Test Rating");
@@ -123,7 +121,6 @@ public class GameServiceTest {
 
     @Test
     public void testFindByTitle() {
-        // Setting up mock for findByTitle
         List<Game> titleGames = new ArrayList<>();
         titleGames.add(new Game());
         doReturn(titleGames).when(gameRepository).findByTitle("Test Title");
