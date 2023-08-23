@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/ConsoleControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/GameServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/GameControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/GameControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/ConsoleRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/ConsoleRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +45,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ConsoleControllerTest">
+  <component name="RunManager" selected="JUnit.GameServiceTest">
     <configuration name="ConsoleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
@@ -93,27 +91,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repository.*" />
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.GameRepositoryTest" />
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.GameServiceTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameServiceTest.testAddGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.GameServiceTest" />
+      <option name="METHOD_NAME" value="testAddGame" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameServiceTest" />
+        <item itemvalue="JUnit.GameServiceTest.testAddGame" />
         <item itemvalue="JUnit.ConsoleControllerTest" />
         <item itemvalue="JUnit.GameControllerTest" />
         <item itemvalue="JUnit.ConsoleRepositoryTest" />
-        <item itemvalue="JUnit.GameRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
