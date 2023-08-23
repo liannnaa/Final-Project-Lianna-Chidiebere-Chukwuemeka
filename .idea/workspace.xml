@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/TshirtController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/TshirtRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/TshirtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/TshirtService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,18 +46,16 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ConsoleServiceTest">
-    <configuration name="ConsoleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TshirtRepositoryTest">
+    <configuration name="GamestoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.GamestoreApplication" />
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.controller.*" />
+          <option name="PATTERN" value="com.company.gamestore.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.controller.ConsoleControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -73,21 +70,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
       <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.ConsoleServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gamestore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.gamestore.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.controller.GameControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,13 +106,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TshirtRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.TshirtRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TshirtRepositoryTest" />
+        <item itemvalue="Application.GamestoreApplication" />
         <item itemvalue="JUnit.ConsoleServiceTest" />
         <item itemvalue="JUnit.GameServiceTest" />
         <item itemvalue="JUnit.GameServiceTest.testAddGame" />
-        <item itemvalue="JUnit.ConsoleControllerTest" />
-        <item itemvalue="JUnit.GameControllerTest" />
       </list>
     </recent_temporary>
   </component>
