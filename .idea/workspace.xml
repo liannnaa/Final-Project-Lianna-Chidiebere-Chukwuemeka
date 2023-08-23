@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/ConsoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/ConsoleRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/CustomErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/CustomErrorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/exception/GameNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/exception/NotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/exception/InvalidGameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/exception/InvalidException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/GameRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/GameRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/CustomErrorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/CustomErrorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/GameExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/exception/GameNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/exception/InvalidGameException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/GameService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,44 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.ConsoleRepositoryTest">
+    <configuration name="ConsoleRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.ConsoleRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.GameRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ConsoleRepositoryTest" />
+        <item itemvalue="JUnit.GameRepositoryTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

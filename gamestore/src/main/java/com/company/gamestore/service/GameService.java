@@ -60,7 +60,11 @@ public class GameService {
     }
 
     public List<Game> findByTitle(String title) {
-        return gameRepository.findByTitle(title);
+        List<Game> gamesByTitle = gameRepository.findByTitle(title);
+        if (gamesByTitle == null || gamesByTitle.isEmpty()) {
+            throw new NotFoundException("No games found with title: " + title);
+        }
+        return gamesByTitle;
     }
 
     public Game updateGame(Game game) {

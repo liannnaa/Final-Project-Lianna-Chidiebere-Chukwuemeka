@@ -26,11 +26,11 @@ public class GameRepositoryTest {
         // Arrange
         game = new Game();
         game.setTitle("Test Title");
-        game.setEsrbRating("E");
+        game.setEsrbRating("Test Rating");
         game.setDescription("Test Description");
-        game.setPrice(59.99);
+        game.setPrice(1.00);
         game.setStudio("Test Studio");
-        game.setQuantity(10);
+        game.setQuantity(1);
         game = gameRepo.save(game);
     }
 
@@ -76,15 +76,55 @@ public class GameRepositoryTest {
         // Arrange
         Game game2 = new Game();
         game2.setTitle("Test Title 2");
-        game2.setEsrbRating("E");
+        game2.setEsrbRating("Test Rating 2");
         game2.setDescription("Test Description 2");
-        game2.setPrice(69.99);
-        game2.setStudio("Different Studio");
-        game2.setQuantity(20);
+        game2.setPrice(2.00);
+        game2.setStudio("Test Studio 2");
+        game2.setQuantity(2);
         gameRepo.save(game2);
 
         // Act
         List<Game> games = gameRepo.findByStudio(game.getStudio());
+
+        // Assert
+        assertTrue(games.contains(game));
+        assertFalse(games.contains(game2));
+    }
+
+    @Test
+    public void getGamesByEsrbRating() {
+        // Arrange
+        Game game2 = new Game();
+        game2.setTitle("Test Title 2");
+        game2.setEsrbRating("Test Rating 2");
+        game2.setDescription("Test Description 2");
+        game2.setPrice(2.00);
+        game2.setStudio("Test Studio 2");
+        game2.setQuantity(2);
+        gameRepo.save(game2);
+
+        // Act
+        List<Game> games = gameRepo.findByEsrbRating(game.getEsrbRating());
+
+        // Assert
+        assertTrue(games.contains(game));
+        assertFalse(games.contains(game2));
+    }
+
+    @Test
+    public void getGamesByTitle() {
+        // Arrange
+        Game game2 = new Game();
+        game2.setTitle("Test Title 2");
+        game2.setEsrbRating("Test Rating 2");
+        game2.setDescription("Test Description 2");
+        game2.setPrice(2.00);
+        game2.setStudio("Test Studio 2");
+        game2.setQuantity(2);
+        gameRepo.save(game2);
+
+        // Act
+        List<Game> games = gameRepo.findByTitle(game.getTitle());
 
         // Assert
         assertTrue(games.contains(game));
