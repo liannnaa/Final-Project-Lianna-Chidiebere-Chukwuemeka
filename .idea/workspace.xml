@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Invoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Fee.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
