@@ -50,7 +50,7 @@ public class TshirtService {
     }
 
     public List<Tshirt> findBySize(String size) {
-        List<Tshirt> tshirtsBySize = tshirtRepository.findByColor(size);
+        List<Tshirt> tshirtsBySize = tshirtRepository.findBySize(size);
         if (tshirtsBySize == null || tshirtsBySize.isEmpty()) {
             throw new NotFoundException("No tshirts found with size: " + size);
         }
