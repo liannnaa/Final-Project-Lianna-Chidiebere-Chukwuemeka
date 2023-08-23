@@ -1,6 +1,7 @@
 package com.company.gamestore.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -17,12 +18,12 @@ public class Invoice {
     private String zipcode;
     private String itemType;
     private int itemId;
-    private Double unitPrice;
+    private BigDecimal unitPrice;
     private int quantity;
-    private Double subtotal;
-    private Double tax;
-    private Double processingFee;
-    private Double total;
+    private BigDecimal subtotal;
+    private BigDecimal tax;
+    private BigDecimal processingFee;
+    private BigDecimal total;
 
     public int getInvoiceId() {
         return invoiceId;
@@ -88,11 +89,11 @@ public class Invoice {
         this.itemId = itemId;
     }
 
-    public Double getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -104,35 +105,35 @@ public class Invoice {
         this.quantity = quantity;
     }
 
-    public Double getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(Double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
-    public Double getTax() {
+    public BigDecimal getTax() {
         return tax;
     }
 
-    public void setTax(Double tax) {
+    public void setTax(BigDecimal tax) {
         this.tax = tax;
     }
 
-    public Double getProcessingFee() {
+    public BigDecimal getProcessingFee() {
         return processingFee;
     }
 
-    public void setProcessingFee(Double processingFee) {
+    public void setProcessingFee(BigDecimal processingFee) {
         this.processingFee = processingFee;
     }
 
-    public Double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 

@@ -1,6 +1,7 @@
 package com.company.gamestore.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -10,7 +11,7 @@ public class Tax {
     @Id
     @Column(length = 2)
     private String state;
-    private Double rate;
+    private BigDecimal rate;
 
     public String getState() {
         return state;
@@ -20,11 +21,11 @@ public class Tax {
         this.state = state;
     }
 
-    public Double getRate() {
+    public BigDecimal getRate() {
         return rate;
     }
 
-    public void setRate(Double rate) {
+    public void setRate(BigDecimal rate) {
         this.rate = rate;
     }
 
