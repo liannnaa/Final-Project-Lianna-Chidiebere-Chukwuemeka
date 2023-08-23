@@ -1,7 +1,7 @@
 package com.company.gamestore.controller;
 
-import com.company.gamestore.exception.GameNotFoundException;
-import com.company.gamestore.exception.InvalidGameException;
+import com.company.gamestore.exception.NotFoundException;
+import com.company.gamestore.exception.InvalidException;
 import com.company.gamestore.model.Game;
 import com.company.gamestore.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +18,15 @@ public class GameController {
     @Autowired
     GameService gameService;
 
-    @ExceptionHandler(GameNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleNotFound(GameNotFoundException ex) {
+    public String handleNotFound(NotFoundException ex) {
         return ex.getMessage();
     }
 
-    @ExceptionHandler(InvalidGameException.class)
+    @ExceptionHandler(InvalidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleInvalidGame(InvalidGameException ex) {
+    public String handleInvalidGame(InvalidException ex) {
         return ex.getMessage();
     }
 

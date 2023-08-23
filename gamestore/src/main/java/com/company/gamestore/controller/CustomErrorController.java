@@ -1,7 +1,7 @@
 package com.company.gamestore.controller;
 
-import com.company.gamestore.exception.GameNotFoundException;
-import com.company.gamestore.exception.InvalidGameException;
+import com.company.gamestore.exception.NotFoundException;
+import com.company.gamestore.exception.InvalidException;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +28,13 @@ public class CustomErrorController implements ErrorController {
         return null;
     }
 
-    @ExceptionHandler(GameNotFoundException.class)
-    public final ResponseEntity<String> handleGameNotFoundException(GameNotFoundException ex) {
+    @ExceptionHandler(NotFoundException.class)
+    public final ResponseEntity<String> handleNotFoundException(NotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(InvalidGameException.class)
-    public final ResponseEntity<String> handleInvalidGameException(InvalidGameException ex) {
+    @ExceptionHandler(InvalidException.class)
+    public final ResponseEntity<String> handleInvalidException(InvalidException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
