@@ -13,7 +13,7 @@ public class Game {
     private String title;
     private String esrbRating;
     private String description;
-    private double price;
+    private Double price;
     private String studio;
     private int quantity;
 
@@ -49,11 +49,11 @@ public class Game {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

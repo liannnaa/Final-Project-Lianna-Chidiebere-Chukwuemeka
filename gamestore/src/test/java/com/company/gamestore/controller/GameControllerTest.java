@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -28,7 +29,7 @@ public class GameControllerTest {
     @MockBean
     private GameService gameService;
 
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     private Game game;
 
     @BeforeEach
@@ -67,7 +68,7 @@ public class GameControllerTest {
 
     @Test
     public void getAllGamesTest() throws Exception {
-        when(gameService.getAllGames()).thenReturn(Arrays.asList(game));
+        when(gameService.getAllGames()).thenReturn(Collections.singletonList(game));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/games"))
@@ -98,7 +99,7 @@ public class GameControllerTest {
 
     @Test
     public void getGamesByStudioTest() throws Exception {
-        when(gameService.findByStudio("Test Studio")).thenReturn(Arrays.asList(game));  // Correct method name
+        when(gameService.findByStudio("Test Studio")).thenReturn(Collections.singletonList(game));  // Correct method name
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/games/studio/{studio}", "Test Studio"))
