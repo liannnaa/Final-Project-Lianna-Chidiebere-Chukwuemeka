@@ -23,6 +23,10 @@ public class ConsoleService {
         if (console.getModel() == null || console.getManufacturer() == null || console.getPrice() == null || console.getQuantity() == 0) {
             throw new InvalidException("All console fields must be filled.");
         }
+        if (console.getPrice() < 0){
+            throw new InvalidException("Console price must be greater than 0.");
+        }
+
         return consoleRepository.save(console);
     }
 
@@ -46,6 +50,7 @@ public class ConsoleService {
         if (consolesByManufacturer == null || consolesByManufacturer.isEmpty()) {
             throw new NotFoundException("No consoles found with manufacturer: " + manufacturer);
         }
+
         return consolesByManufacturer;
     }
 
@@ -56,6 +61,10 @@ public class ConsoleService {
         if (console.getModel() == null || console.getManufacturer() == null || console.getPrice() == null || console.getQuantity() == 0) {
             throw new InvalidException("All console fields must be filled.");
         }
+        if (console.getPrice() < 0){
+            throw new InvalidException("Console price must be greater than 0.");
+        }
+
         return consoleRepository.save(console);
     }
 

@@ -1,5 +1,7 @@
 package com.company.gamestore.controller;
 
+import com.company.gamestore.exception.InvalidException;
+import com.company.gamestore.exception.NotFoundException;
 import com.company.gamestore.model.Console;
 import com.company.gamestore.service.ConsoleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,8 +19,8 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @WebMvcTest(ConsoleController.class)
 public class ConsoleControllerTest {
@@ -105,6 +107,63 @@ public class ConsoleControllerTest {
                         .get("/consoles/manufacturer/{manufacturer}", "Test Manufacturer"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].model").value("Test Model"));
+    }
+
+    @Test
+    public void addConsolePriceBelowZeroTest() throws Exception {
+        doThrow(new InvalidException("Console price must be greater than 0.")).when(consoleService).addConsole(any(Console.class));
+
+        Console invalidConsolePrice = new Console();
+        invalidConsolePrice.setPrice(-1.00);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/consoles")
+                        .content(mapper.writeValueAsString(invalidConsolePrice))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Console price must be greater than 0."));
+    }
+
+    @Test
+    public void getAllConsolesNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No consoles found.")).when(consoleService).getAllConsoles();
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/consoles"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No consoles found."));
+    }
+
+    @Test
+    public void findByManufacturerNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No consoles found with manufacturer: Test Manufacturer")).when(consoleService).findByManufacturer("Test Manufacturer");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/consoles/manufacturer/{manufacturer}", "Test Manufacturer"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No consoles found with manufacturer: Test Manufacturer"));
+    }
+
+    @Test
+    public void updateConsoleNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("Console not found with id: 1")).when(consoleService).updateConsole(any(Console.class));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/consoles")
+                        .content(mapper.writeValueAsString(console))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Console not found with id: 1"));
+    }
+
+    @Test
+    public void deleteConsoleNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("Console not found with id: 1")).when(consoleService).deleteConsole(1);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/consoles/{id}", 1))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Console not found with id: 1"));
     }
 
 }

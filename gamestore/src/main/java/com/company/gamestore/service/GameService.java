@@ -25,6 +25,9 @@ public class GameService {
                 || game.getStudio() == null || game.getPrice() == null) {
             throw new InvalidException("All game fields must be filled.");
         }
+        if (game.getPrice() < 0){
+            throw new InvalidException("Game price must be greater than 0.");
+        }
         return gameRepository.save(game);
     }
 
@@ -75,6 +78,10 @@ public class GameService {
                 || game.getStudio() == null || game.getPrice() == null) {
             throw new InvalidException("All game fields must be filled.");
         }
+        if (game.getPrice() < 0){
+            throw new InvalidException("Game price must be greater than 0.");
+        }
+
         return gameRepository.save(game);
     }
 

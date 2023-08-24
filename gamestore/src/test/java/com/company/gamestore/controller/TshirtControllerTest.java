@@ -1,5 +1,8 @@
 package com.company.gamestore.controller;
 
+import com.company.gamestore.exception.InvalidException;
+import com.company.gamestore.exception.NotFoundException;
+import com.company.gamestore.model.Console;
 import com.company.gamestore.model.Tshirt;
 import com.company.gamestore.service.TshirtService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,8 +20,8 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @WebMvcTest(TshirtController.class)
 public class TshirtControllerTest {
@@ -114,5 +117,72 @@ public class TshirtControllerTest {
                         .get("/tshirts/size/{size}", "Test Size"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].color").value("Test Color"));
+    }
+
+    @Test
+    public void addTshirtPriceBelowZeroTest() throws Exception {
+        doThrow(new InvalidException("Tshirt price must be greater than 0.")).when(tshirtService).addTshirt(any(Tshirt.class));
+
+        Tshirt invalidTshirtPrice = new Tshirt();
+        invalidTshirtPrice.setPrice(-1.00);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/tshirts")
+                        .content(mapper.writeValueAsString(invalidTshirtPrice))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Tshirt price must be greater than 0."));
+    }
+
+    @Test
+    public void getAllTshirtsNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No tshirts found.")).when(tshirtService).getAllTshirts();
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/tshirts"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No tshirts found."));
+    }
+
+    @Test
+    public void findByColorNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No tshirts found with color: Test Color")).when(tshirtService).findByColor("Test Color");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/tshirts/color/{color}", "Test Color"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No tshirts found with color: Test Color"));
+    }
+
+    @Test
+    public void findBySizeNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No tshirts found with size: Test Size")).when(tshirtService).findBySize("Test Size");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/tshirts/size/{size}", "Test Size"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No tshirts found with size: Test Size"));
+    }
+
+    @Test
+    public void updateTshirtNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("Tshirt not found with id: 1")).when(tshirtService).updateTshirt(any(Tshirt.class));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/tshirts")
+                        .content(mapper.writeValueAsString(tshirt))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Tshirt not found with id: 1"));
+    }
+
+    @Test
+    public void deleteTshirtNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("Tshirt not found with id: 1")).when(tshirtService).deleteTshirt(1);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/tshirts/{id}", 1))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Tshirt not found with id: 1"));
     }
 }

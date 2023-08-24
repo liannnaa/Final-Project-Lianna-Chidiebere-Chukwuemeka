@@ -23,6 +23,10 @@ public class TshirtService {
         if (tshirt.getSize() == null || tshirt.getColor() == null || tshirt.getDescription() == null || tshirt.getPrice() == null || tshirt.getQuantity() == 0){
             throw new InvalidException("All tshirt fields must be filled.");
         }
+        if (tshirt.getPrice() < 0){
+            throw new InvalidException("Tshirt price must be greater than 0.");
+        }
+
         return tshirtRepository.save(tshirt);
     }
 
@@ -64,6 +68,10 @@ public class TshirtService {
         if (tshirt.getSize() == null || tshirt.getColor() == null || tshirt.getDescription() == null || tshirt.getPrice() == null || tshirt.getQuantity() == 0){
             throw new InvalidException("All tshirt fields must be filled.");
         }
+        if (tshirt.getPrice() < 0){
+            throw new InvalidException("Tshirt price must be greater than 0.");
+        }
+
         return tshirtRepository.save(tshirt);
     }
 

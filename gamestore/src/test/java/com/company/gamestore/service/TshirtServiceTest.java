@@ -1,5 +1,8 @@
 package com.company.gamestore.service;
 
+import com.company.gamestore.exception.InvalidException;
+import com.company.gamestore.exception.NotFoundException;
+import com.company.gamestore.model.Game;
 import com.company.gamestore.model.Tshirt;
 import com.company.gamestore.repository.TshirtRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -137,5 +141,97 @@ public class TshirtServiceTest {
 
         tshirtService.deleteTshirt(1);
         verify(tshirtRepository).deleteById(1);
+    }
+
+    @Test
+    public void testAddTshirtMissingFields() {
+        Tshirt incompleteTshirt = new Tshirt();
+        incompleteTshirt.setSize("Incomplete Tshirt");
+
+        Exception exception = assertThrows(InvalidException.class, () -> {
+            tshirtService.addTshirt(incompleteTshirt);
+        });
+
+        assertEquals("All tshirt fields must be filled.", exception.getMessage());
+    }
+
+    @Test
+    public void testGetTshirtByInvalidId() {
+        when(tshirtRepository.existsById(99)).thenReturn(false);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            tshirtService.getTshirtById(99);
+        });
+
+        assertEquals("Tshirt not found with id: 99", exception.getMessage());
+    }
+
+    @Test
+    public void testUpdateNonExistingTshirt() {
+        Tshirt tshirt = new Tshirt();
+        tshirt.setTshirtId(99);
+        tshirt.setSize("Non Existing Tshirt");
+        tshirt.setColor("Test Color");
+        tshirt.setDescription("Test Description");
+        tshirt.setPrice(1.00);
+        tshirt.setQuantity(1);
+
+        when(tshirtRepository.existsById(99)).thenReturn(false);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            tshirtService.updateTshirt(tshirt);
+        });
+
+        assertEquals("Tshirt not found with id: 99", exception.getMessage());
+    }
+
+    @Test
+    public void testDeleteNonExistingTshirt() {
+        when(tshirtRepository.existsById(99)).thenReturn(false);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            tshirtService.deleteTshirt(99);
+        });
+
+        assertEquals("Tshirt not found with id: 99", exception.getMessage());
+    }
+
+    @Test
+    public void testAddTshirtWithNegativePrice() {
+        Tshirt tshirtWithNegativePrice = new Tshirt();
+        tshirtWithNegativePrice.setSize("Test Size");
+        tshirtWithNegativePrice.setColor("Test Color");
+        tshirtWithNegativePrice.setDescription("Test Description");
+        tshirtWithNegativePrice.setPrice(-1.00);
+        tshirtWithNegativePrice.setQuantity(1);
+
+        InvalidException thrown = assertThrows(
+                InvalidException.class,
+                () -> tshirtService.addTshirt(tshirtWithNegativePrice),
+                "Expected addTshirt to throw an exception, but it didn't"
+        );
+
+        assertEquals("Tshirt price must be greater than 0.", thrown.getMessage());
+    }
+
+    @Test
+    public void testUpdateTshirtWithNegativePrice() {
+        Tshirt tshirtToUpdateWithNegativePrice = new Tshirt();
+        tshirtToUpdateWithNegativePrice.setTshirtId(1);
+        tshirtToUpdateWithNegativePrice.setSize("Test Size");
+        tshirtToUpdateWithNegativePrice.setColor("Test Color");
+        tshirtToUpdateWithNegativePrice.setDescription("Test Description");
+        tshirtToUpdateWithNegativePrice.setPrice(-1.00);
+        tshirtToUpdateWithNegativePrice.setQuantity(1);
+
+        when(tshirtRepository.existsById(tshirtToUpdateWithNegativePrice.getTshirtId())).thenReturn(true);
+
+        InvalidException thrown = assertThrows(
+                InvalidException.class,
+                () -> tshirtService.updateTshirt(tshirtToUpdateWithNegativePrice),
+                "Expected updateTshirt to throw an exception, but it didn't"
+        );
+
+        assertEquals("Tshirt price must be greater than 0.", thrown.getMessage());
     }
 }

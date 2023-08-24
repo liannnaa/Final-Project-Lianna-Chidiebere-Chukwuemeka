@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/Schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/InvoiceController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Fee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Invoice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Tax.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/repository/FeeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/repository/InvoiceRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/repository/TaxRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/InvoiceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/ConsoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/ConsoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/TshirtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/TshirtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/ConsoleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/ConsoleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/GameControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/GameControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/TshirtControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/TshirtControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/ConsoleServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/ConsoleServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/GameServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/GameServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/TshirtServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/TshirtServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,16 +54,33 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.GameServiceTest">
-    <configuration name="GamestoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.GamestoreApplication" />
+  <component name="RunManager" selected="JUnit.TshirtControllerTest">
+    <configuration name="ConsoleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.gamestore.*" />
+          <option name="PATTERN" value="com.company.gamestore.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.controller.ConsoleControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.gamestore.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.controller.GameControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,21 +115,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TshirtRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gamestore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.TshirtRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TshirtServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
@@ -131,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameServiceTest" />
-        <item itemvalue="JUnit.TshirtServiceTest" />
         <item itemvalue="JUnit.TshirtControllerTest" />
-        <item itemvalue="JUnit.TshirtRepositoryTest" />
-        <item itemvalue="Application.GamestoreApplication" />
+        <item itemvalue="JUnit.ConsoleControllerTest" />
+        <item itemvalue="JUnit.GameControllerTest" />
+        <item itemvalue="JUnit.TshirtServiceTest" />
+        <item itemvalue="JUnit.GameServiceTest" />
       </list>
     </recent_temporary>
   </component>

@@ -211,4 +211,45 @@ public class GameServiceTest {
         assertEquals("Game not found with id: 99", exception.getMessage());
     }
 
+    @Test
+    public void testAddGameWithNegativePrice() {
+        Game gameWithNegativePrice = new Game();
+        gameWithNegativePrice.setTitle("Test Title");
+        gameWithNegativePrice.setEsrbRating("Test Rating");
+        gameWithNegativePrice.setDescription("Test Description");
+        gameWithNegativePrice.setPrice(-1.00);
+        gameWithNegativePrice.setStudio("Test Studio");
+        gameWithNegativePrice.setQuantity(1);
+
+        InvalidException thrown = assertThrows(
+                InvalidException.class,
+                () -> gameService.addGame(gameWithNegativePrice),
+                "Expected addGame to throw an exception, but it didn't"
+        );
+
+        assertEquals("Game price must be greater than 0.", thrown.getMessage());
+    }
+
+    @Test
+    public void testUpdateGameWithNegativePrice() {
+        Game gameToUpdateWithNegativePrice = new Game();
+        gameToUpdateWithNegativePrice.setGameId(1);
+        gameToUpdateWithNegativePrice.setTitle("Test Title");
+        gameToUpdateWithNegativePrice.setEsrbRating("Test Rating");
+        gameToUpdateWithNegativePrice.setDescription("Test Description");
+        gameToUpdateWithNegativePrice.setPrice(-1.00);
+        gameToUpdateWithNegativePrice.setStudio("Test Studio");
+        gameToUpdateWithNegativePrice.setQuantity(1);
+
+        when(gameRepository.existsById(gameToUpdateWithNegativePrice.getGameId())).thenReturn(true);
+
+        InvalidException thrown = assertThrows(
+                InvalidException.class,
+                () -> gameService.updateGame(gameToUpdateWithNegativePrice),
+                "Expected updateGame to throw an exception, but it didn't"
+        );
+
+        assertEquals("Game price must be greater than 0.", thrown.getMessage());
+    }
+
 }

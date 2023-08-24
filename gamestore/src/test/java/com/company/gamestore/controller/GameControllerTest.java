@@ -1,5 +1,7 @@
 package com.company.gamestore.controller;
 
+import com.company.gamestore.exception.InvalidException;
+import com.company.gamestore.exception.NotFoundException;
 import com.company.gamestore.model.Game;
 import com.company.gamestore.service.GameService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,8 +19,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(GameController.class)
@@ -126,4 +127,82 @@ public class GameControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].title").value("Test Title"));
     }
+
+    @Test
+    public void addGamePriceBelowZeroTest() throws Exception {
+        doThrow(new InvalidException("Game price must be greater than 0.")).when(gameService).addGame(any(Game.class));
+
+        Game invalidGamePrice = new Game();
+        invalidGamePrice.setPrice(-1.00);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/games")
+                        .content(mapper.writeValueAsString(invalidGamePrice))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Game price must be greater than 0."));
+    }
+
+    @Test
+    public void getAllGamesNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No games found.")).when(gameService).getAllGames();
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/games"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No games found."));
+    }
+
+    @Test
+    public void findByStudioNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No games found with studio: Test Studio")).when(gameService).findByStudio("Test Studio");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/games/studio/{studio}", "Test Studio"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No games found with studio: Test Studio"));
+    }
+
+    @Test
+    public void findByEsrbRatingNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No games found with ESRB rating: Test Rating")).when(gameService).findByEsrbRating("Test Rating");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/games/rating/{rating}", "Test Rating"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No games found with ESRB rating: Test Rating"));
+    }
+
+    @Test
+    public void findByTitleNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("No games found with title: Test Title")).when(gameService).findByTitle("Test Title");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/games/title/{title}", "Test Title"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("No games found with title: Test Title"));
+    }
+
+    @Test
+    public void updateGameNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("Game not found with id: 1")).when(gameService).updateGame(any(Game.class));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/games")
+                        .content(mapper.writeValueAsString(game))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Game not found with id: 1"));
+    }
+
+    @Test
+    public void deleteGameNotFoundTest() throws Exception {
+        doThrow(new NotFoundException("Game not found with id: 1")).when(gameService).deleteGame(1);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/games/{id}", 1))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Game not found with id: 1"));
+    }
+
 }
