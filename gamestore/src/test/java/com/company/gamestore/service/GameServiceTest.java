@@ -1,5 +1,7 @@
 package com.company.gamestore.service;
 
+import com.company.gamestore.exception.InvalidException;
+import com.company.gamestore.exception.NotFoundException;
 import com.company.gamestore.model.Game;
 import com.company.gamestore.repository.GameRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class GameServiceTest {
@@ -153,4 +156,59 @@ public class GameServiceTest {
         gameService.deleteGame(1);
         verify(gameRepository).deleteById(1);
     }
+
+    @Test
+    public void testAddGameMissingFields() {
+        Game incompleteGame = new Game();
+        incompleteGame.setTitle("Incomplete Game");
+
+        Exception exception = assertThrows(InvalidException.class, () -> {
+            gameService.addGame(incompleteGame);
+        });
+
+        assertEquals("All game fields must be filled.", exception.getMessage());
+    }
+
+    @Test
+    public void testGetGameByInvalidId() {
+        when(gameRepository.existsById(99)).thenReturn(false);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            gameService.getGameById(99);
+        });
+
+        assertEquals("Game not found with id: 99", exception.getMessage());
+    }
+
+    @Test
+    public void testUpdateNonExistingGame() {
+        Game game = new Game();
+        game.setGameId(99);
+        game.setTitle("Non Existing Game");
+        game.setEsrbRating("Test Rating");
+        game.setDescription("Test Description");
+        game.setPrice(1.00);
+        game.setStudio("Test Studio");
+        game.setQuantity(1);
+
+        when(gameRepository.existsById(99)).thenReturn(false);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            gameService.updateGame(game);
+        });
+
+        assertEquals("Game not found with id: 99", exception.getMessage());
+    }
+
+    @Test
+    public void testDeleteNonExistingGame() {
+        when(gameRepository.existsById(99)).thenReturn(false);
+
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            gameService.deleteGame(99);
+        });
+
+        assertEquals("Game not found with id: 99", exception.getMessage());
+    }
+
 }
