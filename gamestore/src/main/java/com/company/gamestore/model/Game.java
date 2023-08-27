@@ -1,6 +1,7 @@
 package com.company.gamestore.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -10,12 +11,22 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gameId;
+    @NotNull(message = "Title cannot be null")
     private String title;
+
+    @NotNull(message = "ESRB rating cannot be null")
     private String esrbRating;
+
+    @NotNull(message = "Description cannot be null")
     private String description;
+
+    @NotNull(message = "Price cannot be null")
     private Double price;
+
+    @NotNull(message = "Studio cannot be null")
     private String studio;
-    private int quantity;
+
+    private Integer quantity;
 
     public int getGameId() {
         return gameId;

@@ -1,6 +1,7 @@
 package com.company.gamestore.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -10,11 +11,17 @@ public class Console {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int consoleId;
+    @NotNull(message = "Model cannot be null")
     private String model;
+    @NotNull(message = "Manufacturer cannot be null")
     private String manufacturer;
+    @NotNull(message = "Memory Amount cannot be null")
     private String memoryAmount;
+    @NotNull(message = "Processor cannot be null")
     private String processor;
+    @NotNull(message = "Price cannot be null")
     private Double price;
+    @NotNull(message = "Quantity cannot be null")
     private int quantity;
 
     public int getConsoleId() {

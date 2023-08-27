@@ -1,6 +1,7 @@
 package com.company.gamestore.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -9,10 +10,15 @@ public class Tshirt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tshirtId;
+    @NotNull(message = "Size cannot be null")
     private String size;
+    @NotNull(message = "Color cannot be null")
     private String color;
+    @NotNull(message = "Description cannot be null")
     private String description;
+    @NotNull(message = "Price cannot be null")
     private Double price;
+    @NotNull(message = "Quantity cannot be null")
     private int quantity;
 
     public int getTshirtId() {
