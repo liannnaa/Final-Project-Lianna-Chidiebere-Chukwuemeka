@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Final-Project-Lianna-Chidiebere-Chukwuemeka.iml" filepath="$PROJECT_DIR$/.idea/Final-Project-Lianna-Chidiebere-Chukwuemeka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authorization-service/authorization-service.iml" filepath="$PROJECT_DIR$/authorization-service/authorization-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/gamestore/gamestore.iml" filepath="$PROJECT_DIR$/gamestore/gamestore.iml" />
     </modules>
   </component>
