@@ -6,6 +6,7 @@ import com.company.gamestore.model.Game;
 import com.company.gamestore.repository.GameRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+@AutoConfigureMockMvc(addFilters = false)
 public class GameServiceTest {
     private GameService gameService;
     private GameRepository gameRepository;

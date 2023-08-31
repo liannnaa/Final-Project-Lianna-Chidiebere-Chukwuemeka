@@ -7,6 +7,7 @@ import com.company.gamestore.model.Tshirt;
 import com.company.gamestore.repository.TshirtRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
+@AutoConfigureMockMvc(addFilters = false)
 public class TshirtServiceTest {
     private TshirtService tshirtService;
     private TshirtRepository tshirtRepository;

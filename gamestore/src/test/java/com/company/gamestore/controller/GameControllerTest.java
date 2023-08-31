@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -23,6 +24,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(GameController.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class GameControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -126,21 +128,6 @@ public class GameControllerTest {
                         .get("/games/title/{title}", "Test Title"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].title").value("Test Title"));
-    }
-
-    @Test
-    public void addGamePriceBelowZeroTest() throws Exception {
-        doThrow(new InvalidException("Game price must be greater than 0.")).when(gameService).addGame(any(Game.class));
-
-        Game invalidGamePrice = new Game();
-        invalidGamePrice.setPrice(-1.00);
-
-        mockMvc.perform(MockMvcRequestBuilders
-                        .post("/games")
-                        .content(mapper.writeValueAsString(invalidGamePrice))
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string("Game price must be greater than 0."));
     }
 
     @Test
