@@ -2,10 +2,12 @@ package com.company.gamestore.service;
 
 import com.company.gamestore.model.*;
 import com.company.gamestore.repository.*;
-import com.company.gamestore.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,142 +15,109 @@ public class InvoiceService {
 
     @Autowired
     private InvoiceRepository invoiceRepository;
-    private GameRepository gameRepository;
-    private TshirtRepository tshirtRepository;
 
-    private ConsoleRepository consoleRepository;
-    private FeeRepository feeRepository;
+    @Autowired
     private TaxRepository taxRepository;
 
     @Autowired
-    public InvoiceService(InvoiceRepository invRepo){
-        this.invoiceRepository = invRepo;
-    }
+    private FeeRepository feeRepository;
 
+    @Autowired
+    private GameRepository gameRepository;
 
-    public InvoiceViewModel buildInvoiceViewModel(Invoice invoice) {
-        InvoiceViewModel inv = new InvoiceViewModel();
+    @Autowired
+    private ConsoleRepository consoleRepository;
 
-        // Assemble the view model
-        inv.setId(invoice.getInvoiceId());
-        inv.setName(invoice.getName());
-        inv.setStreet(invoice.getStreet());
-        inv.setCity(invoice.getCity());
-        inv.setState(invoice.getState());
-        inv.setZipcode(invoice.getZipcode());
-        inv.setItemType(invoice.getItemType());
-        inv.setItemId(invoice.getItemId());
-        inv.setUnitPrice(invoice.getUnitPrice());
-        inv.setQuantity(invoice.getQuantity());
-        inv.setSubtotal(invoice.getSubtotal());
-        inv.setTax(invoice.getTax());
-        inv.setFee(invoice.getFee());   //need to create
-        inv.setTotal(invoice.getTotal());
+    @Autowired
+    private TshirtRepository tshirtRepository;
 
-        return inv; // return the invoice view model
-    }
+    // Method to create an invoice
+    public Invoice createInvoice(Invoice invoice) {
+        // Validation
+        if (invoice.getQuantity() <= 0) {
+            throw new IllegalArgumentException("Order quantity must be greater than zero.");
+        }
 
+        // Initialize variables
+        int availableInventory = 0;
+        BigDecimal unitPrice = BigDecimal.ZERO;
 
-    // SAVE(POST) an invoice
-    // @Transactional
-    public InvoiceViewModel saveInvoice(InvoiceViewModel viewModel){
-        Invoice invoice = new Invoice();
-
-        // Set what we know for invoice
-        invoice.setName(viewModel.getName());
-        invoice.setStreet(viewModel.getStreet());
-        invoice.setCity(viewModel.getCity());
-        invoice.setState(viewModel.getState());
-        invoice.setZipcode(viewModel.getZipcode());
-        invoice.setItemType(viewModel.getItemType());
-        invoice.setItemId(viewModel.getItemId());
-        invoice.setQuantity(viewModel.getQuantity());
-
-        // Validate item type (Maybe find a way to reduce later)
-        switch (viewModel.getItemType().toUpperCase()) {
-            case "GAME":
-                invoice.setItemType("GAME");
-
-                Optional<Game> game = gameRepository.findById(invoice.getItemId());
-
-                if(game.isEmpty()) // if not found
-                    throw new IllegalArgumentException("Game not found.");
-
-
-                if(game.get().getQuantity() < invoice.getQuantity()) // if not enough in stock
-                    throw new IllegalArgumentException("Not enough games in stock.");
-                else
-                    game.get().setQuantity(game.get().getQuantity() - invoice.getQuantity()); // update stock
-
+        // Checking available inventory and unit price based on itemType
+        switch (invoice.getItemType()) {
+            case "Game":
+                Game game = gameRepository.findById(invoice.getItemId()).orElseThrow(() ->
+                        new IllegalArgumentException("Game with ID " + invoice.getItemId() + " not found."));
+                availableInventory = game.getQuantity();
+                unitPrice = BigDecimal.valueOf(game.getPrice());
                 break;
-            case "TSHIRT":
-                invoice.setItemType("TSHIRT");
-                Optional<Tshirt> tShirt = tshirtRepository.findById(invoice.getItemId());
-
-                if(tShirt.isEmpty()) // if not found
-                    throw new IllegalArgumentException("Tshirt not found.");
-
-
-                if(tShirt.get().getQuantity() < invoice.getQuantity()) // if not enough in stock
-                    throw new IllegalArgumentException("Not enough Tshirts in stock.");
-                else
-                    tShirt.get().setQuantity(tShirt.get().getQuantity() - invoice.getQuantity()); // update stock
-
+            case "Console":
+                Console console = consoleRepository.findById(invoice.getItemId()).orElseThrow(() ->
+                        new IllegalArgumentException("Console with ID " + invoice.getItemId() + " not found."));
+                availableInventory = console.getQuantity();
+                unitPrice = BigDecimal.valueOf(console.getPrice());
                 break;
-            case "CONSOLE":
-                invoice.setItemType("CONSOLE");
-
-                Optional<Tshirt> console = tshirtRepository.findById(invoice.getItemId());
-
-                if(console.isEmpty()) // if not found
-                    throw new IllegalArgumentException("Console not found.");
-
-
-                if(console.get().getQuantity() < invoice.getQuantity()) // if not enough in stock
-                    throw new IllegalArgumentException("Not enough consoles in stock.");
-                else
-                    console.get().setQuantity(console.get().getQuantity() - invoice.getQuantity()); // update stock
-
+            case "Tshirt":
+                Tshirt tshirt = tshirtRepository.findById(invoice.getItemId()).orElseThrow(() ->
+                        new IllegalArgumentException("Tshirt with ID " + invoice.getItemId() + " not found."));
+                availableInventory = tshirt.getQuantity();
+                unitPrice = BigDecimal.valueOf(tshirt.getPrice());
                 break;
             default:
-                throw new IllegalArgumentException("Not a valid item type");
-        }
-        viewModel.setItemType(invoice.getItemType()); // make sure view model matches
-
-
-        // Calculate subtotal and set it
-        BigDecimal subtotalFormatted = invoice.getSubtotal().setScale(2,BigDecimal.ROUND_HALF_UP);
-        invoice.setSubtotal(subtotalFormatted);
-
-
-        // Calculate tax rate
-        Optional<Tax> stateTax = taxRepository.findTaxRateByState(invoice.getState());
-
-
-        if(stateTax.isPresent()){
-            BigDecimal salesTaxRate = stateTax.get().getRate(); // gets rate from optional above
-            // formats the tax calculation
-            BigDecimal taxFormatted = (salesTaxRate.multiply(invoice.getSubtotal())).setScale(2, BigDecimal.ROUND_HALF_UP);
-            invoice.setTax(taxFormatted);// sets the tax rate
+                throw new IllegalArgumentException("Invalid item type provided.");
         }
 
+        // Set the unitPrice in the invoice
+        invoice.setUnitPrice(unitPrice);
 
-        // Calculate processing fee
-        Optional<Fee> processingFee = feeRepository.findByProductType(invoice.getItemType());
-
-        if(processingFee.isPresent()){ // if processing Fee is present
-            BigDecimal invoiceFee = processingFee.get().getFee();
-            if(invoice.getQuantity() > 10){ // add additional fee if quantity > 10
-                invoiceFee = invoiceFee.add(new BigDecimal("15.49"));
-            }
-            invoice.setFee(invoiceFee); // set invoice fee
+        // Checking available inventory
+        if (invoice.getQuantity() > availableInventory) {
+            throw new IllegalArgumentException("Order quantity exceeds available inventory.");
         }
-        // save the invoice
-        invoice = invoiceRepository.save(invoice);
 
-        // set Id of View Model
-        viewModel.setId(invoice.getInvoiceId());
+        Optional<Tax> taxRateOptional = taxRepository.findTaxRateByState(invoice.getState());
+        if (!taxRateOptional.isPresent()) {
+            throw new IllegalArgumentException("Invalid state code provided.");
+        }
 
-        return viewModel;
+        // Calculation
+        BigDecimal subtotal = unitPrice.multiply(new BigDecimal(invoice.getQuantity()));
+        BigDecimal taxAmount = subtotal.multiply(taxRateOptional.get().getRate()).setScale(2, RoundingMode.HALF_UP);
+
+        Optional<Fee> feeOptional = feeRepository.findByProductType(invoice.getItemType());
+        if (!feeOptional.isPresent()) {
+            throw new IllegalArgumentException("Invalid item type provided.");
+        }
+        BigDecimal processingFee = feeOptional.get().getFee();
+        if (invoice.getQuantity() > 10) {
+            processingFee = processingFee.add(new BigDecimal("15.49"));
+        }
+
+        BigDecimal total = subtotal.add(taxAmount).add(processingFee).setScale(2, RoundingMode.HALF_UP);
+
+        // Setting the calculated values to the invoice
+        invoice.setSubtotal(subtotal);
+        invoice.setTax(taxAmount);
+        invoice.setProcessingFee(processingFee);
+        invoice.setTotal(total);
+
+        // Persistence
+        return invoiceRepository.save(invoice);
+    }
+
+
+    // Method to retrieve an invoice by ID
+    public Invoice getInvoiceById(int id) {
+        return invoiceRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invoice with ID " + id + " not found."));
+    }
+
+    // Method to retrieve all invoices
+    public List<Invoice> getAllInvoices() {
+        return invoiceRepository.findAll();
+    }
+
+    // Method to retrieve invoices by customer name
+    public List<Invoice> getInvoicesByCustomerName(String name) {
+        return invoiceRepository.findByName(name);
     }
 }

@@ -6,46 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/ConsoleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/ConsoleControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/GameControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/GameControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/TshirtControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/controller/TshirtControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/ConsoleRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/ConsoleRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/GameRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/GameRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/TshirtRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/repository/TshirtRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/ConsoleServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/ConsoleServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/GameServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/GameServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/TshirtServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/test/java/com/company/gamestore/service/TshirtServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/GamestoreApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/GamestoreApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/ConsoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/ConsoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/ControllerAdvice.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/ControllerAdvice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/InvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Invoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/InvoiceViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/InvoiceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/InvoiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/InvoiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/TshirtController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/TshirtController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/exception/InvalidException.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/exception/InvalidException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/exception/NotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/exception/NotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Console.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Console.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Invoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Invoice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/InvoiceViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/InvoiceViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Tshirt.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Tshirt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/ConsoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/ConsoleRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/GameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/GameRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/InvoiceViewModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/FeeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/FeeRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/InvoiceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/InvoiceRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/TshirtRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/TshirtRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/ConsoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/ConsoleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/GameService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/ServiceLayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/ServiceLayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/TshirtService.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/TshirtService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/GamestoreApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/GamestoreApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/controller/ConsoleControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/controller/ConsoleControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/controller/GameControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/controller/GameControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/controller/TshirtControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/controller/TshirtControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/repository/ConsoleRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/repository/ConsoleRepositoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/repository/GameRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/repository/GameRepositoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/repository/TshirtRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/repository/TshirtRepositoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/service/ConsoleServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/service/ConsoleServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/service/GameServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/service/GameServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/service/TshirtServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/test-classes/com/company/gamestore/service/TshirtServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/TaxRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/TaxRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/ServiceLayer.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +62,33 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TshirtServiceTest">
+  <component name="RunManager" selected="Application.GamestoreApplication">
+    <configuration name="AuthorizationServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.authorizationservice.AuthorizationServiceApplication" />
+      <module name="authorization-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.authorizationservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GamestoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.GamestoreApplication" />
+      <module name="gamestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.gamestore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ConsoleServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
@@ -107,21 +104,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gamestore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.GameRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GameServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gamestore" />
       <extension name="coverage">
@@ -132,21 +114,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.company.gamestore.service" />
       <option name="MAIN_CLASS_NAME" value="com.company.gamestore.service.GameServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TshirtRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gamestore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.gamestore.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.company.gamestore.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.company.gamestore.repository.TshirtRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -169,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GamestoreApplication" />
+        <item itemvalue="Application.AuthorizationServiceApplication" />
         <item itemvalue="JUnit.TshirtServiceTest" />
         <item itemvalue="JUnit.GameServiceTest" />
         <item itemvalue="JUnit.ConsoleServiceTest" />
-        <item itemvalue="JUnit.TshirtRepositoryTest" />
-        <item itemvalue="JUnit.GameRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
