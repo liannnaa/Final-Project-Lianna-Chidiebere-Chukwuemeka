@@ -1,0 +1,34 @@
+type Game {
+    gameId: ID!
+    title: String!
+    esrbRating: String!
+    description: String!
+    price: Float!
+    studio: String!
+    quantity: Int!
+}
+
+type Console {
+    consoleId: ID!
+    model: String!
+    manufacturer: String!
+    memoryAmount: String!
+    processor: String!
+    price: Float!
+    quantity: Int!
+}
+
+type Query {
+    # Game Queries
+    getAllGames: [Game!]!
+    getGameById(id: ID!): Game
+    getGamesByTitle(title: String!): [Game!]!
+    getGamesByEsrbRating(esrbRating: String!): [Game!]!
+    getGamesByStudio(studio: String!): [Game!]!
+
+    # Console Queries
+    getAllConsoles: [Console!]!
+    getConsoleById(id: ID!): Console
+    getConsolesByManufacturer(manufacturer: String!): [Console!]!
+}
+

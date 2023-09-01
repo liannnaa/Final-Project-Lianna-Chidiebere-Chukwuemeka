@@ -6,17 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7e3a8832-4569-4bb9-8b96-4607a4e231d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/controller/InvoiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/model/InvoiceViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/src/main/java/com/company/gamestore/service/InvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/InvoiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/controller/InvoiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Invoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/Invoice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/model/InvoiceViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/FeeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/FeeRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/InvoiceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/InvoiceRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/TaxRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/repository/TaxRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamestore/target/classes/com/company/gamestore/service/ServiceLayer.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

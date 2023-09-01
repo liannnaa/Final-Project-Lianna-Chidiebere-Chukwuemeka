@@ -1,6 +1,7 @@
 package com.company.gamestore.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -11,14 +12,22 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int invoiceId;
+    @NotNull(message = "Name cannot be null")
     private String name;
+    @NotNull(message = "Street cannot be null")
     private String street;
+    @NotNull(message = "City cannot be null")
     private String city;
+    @NotNull(message = "State cannot be null")
     private String state;
+    @NotNull(message = "Zip Code cannot be null")
     private String zipcode;
+    @NotNull(message = "Item Type cannot be null")
     private String itemType;
+    @NotNull(message = "Item Id cannot be null")
     private int itemId;
     private BigDecimal unitPrice;
+    @NotNull(message = "Quantity cannot be null")
     private int quantity;
     private BigDecimal subtotal;
     private BigDecimal tax;

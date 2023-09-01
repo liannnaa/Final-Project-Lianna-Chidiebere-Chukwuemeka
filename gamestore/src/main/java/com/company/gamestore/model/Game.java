@@ -96,5 +96,4 @@ public class Game {
     public int hashCode() {
         return Objects.hash(gameId, title, esrbRating, description, price, studio, quantity);
     }
-
 }

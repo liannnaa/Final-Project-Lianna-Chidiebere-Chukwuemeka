@@ -13,23 +13,33 @@ import java.util.Optional;
 @Service
 public class InvoiceService {
 
-    @Autowired
     private InvoiceRepository invoiceRepository;
 
-    @Autowired
     private TaxRepository taxRepository;
 
-    @Autowired
     private FeeRepository feeRepository;
 
-    @Autowired
     private GameRepository gameRepository;
 
-    @Autowired
     private ConsoleRepository consoleRepository;
 
-    @Autowired
     private TshirtRepository tshirtRepository;
+
+    public InvoiceService(
+            InvoiceRepository invoiceRepository,
+            TaxRepository taxRepository,
+            FeeRepository feeRepository,
+            GameRepository gameRepository,
+            ConsoleRepository consoleRepository,
+            TshirtRepository tshirtRepository
+    ) {
+        this.invoiceRepository = invoiceRepository;
+        this.taxRepository = taxRepository;
+        this.feeRepository = feeRepository;
+        this.gameRepository = gameRepository;
+        this.consoleRepository = consoleRepository;
+        this.tshirtRepository = tshirtRepository;
+    }
 
     // Method to create an invoice
     public Invoice createInvoice(Invoice invoice) {
@@ -41,6 +51,7 @@ public class InvoiceService {
         // Initialize variables
         int availableInventory = 0;
         BigDecimal unitPrice = BigDecimal.ZERO;
+        Object itemToUpdate = null;
 
         // Checking available inventory and unit price based on itemType
         switch (invoice.getItemType()) {
@@ -49,18 +60,21 @@ public class InvoiceService {
                         new IllegalArgumentException("Game with ID " + invoice.getItemId() + " not found."));
                 availableInventory = game.getQuantity();
                 unitPrice = BigDecimal.valueOf(game.getPrice());
+                itemToUpdate = game;
                 break;
             case "Console":
                 Console console = consoleRepository.findById(invoice.getItemId()).orElseThrow(() ->
                         new IllegalArgumentException("Console with ID " + invoice.getItemId() + " not found."));
                 availableInventory = console.getQuantity();
                 unitPrice = BigDecimal.valueOf(console.getPrice());
+                itemToUpdate = console;
                 break;
             case "Tshirt":
                 Tshirt tshirt = tshirtRepository.findById(invoice.getItemId()).orElseThrow(() ->
                         new IllegalArgumentException("Tshirt with ID " + invoice.getItemId() + " not found."));
                 availableInventory = tshirt.getQuantity();
                 unitPrice = BigDecimal.valueOf(tshirt.getPrice());
+                itemToUpdate = tshirt;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid item type provided.");
@@ -72,6 +86,25 @@ public class InvoiceService {
         // Checking available inventory
         if (invoice.getQuantity() > availableInventory) {
             throw new IllegalArgumentException("Order quantity exceeds available inventory.");
+        }
+
+        // Decrement the available inventory
+        int newAvailableInventory = availableInventory - invoice.getQuantity();
+
+        // Update the item's quantity in the respective repository
+        switch (invoice.getItemType()) {
+            case "Game":
+                ((Game) itemToUpdate).setQuantity(newAvailableInventory);
+                gameRepository.save((Game) itemToUpdate);
+                break;
+            case "Console":
+                ((Console) itemToUpdate).setQuantity(newAvailableInventory);
+                consoleRepository.save((Console) itemToUpdate);
+                break;
+            case "Tshirt":
+                ((Tshirt) itemToUpdate).setQuantity(newAvailableInventory);
+                tshirtRepository.save((Tshirt) itemToUpdate);
+                break;
         }
 
         Optional<Tax> taxRateOptional = taxRepository.findTaxRateByState(invoice.getState());
