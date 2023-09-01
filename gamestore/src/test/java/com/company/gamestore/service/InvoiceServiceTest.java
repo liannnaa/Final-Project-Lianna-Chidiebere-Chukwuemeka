@@ -47,8 +47,6 @@ public class InvoiceServiceTest {
                 tshirtRepository
         );
 
-        gameRepository = mock(GameRepository.class);
-
         Invoice mockInvoice = new Invoice();
         mockInvoice.setInvoiceId(1);
         mockInvoice.setName("John Doe");
@@ -57,7 +55,14 @@ public class InvoiceServiceTest {
         when(invoiceRepository.findAll()).thenReturn(Arrays.asList(mockInvoice));
         when(invoiceRepository.findByName("John Doe")).thenReturn(Arrays.asList(mockInvoice));
         when(invoiceRepository.save(any(Invoice.class))).thenReturn(mockInvoice);
+
+        Game mockGame = new Game();
+        mockGame.setGameId(1);
+        mockGame.setQuantity(10);
+
+        when(gameRepository.findById(1)).thenReturn(Optional.of(mockGame));
     }
+
 
     @Test
     public void testCreateInvoice() {
@@ -68,7 +73,7 @@ public class InvoiceServiceTest {
         game.setDescription("Test Description");
         game.setPrice(1.00);
         game.setStudio("Test Studio");
-        game.setQuantity(1);
+        game.setQuantity(5);
 
         when(gameRepository.findById(1)).thenReturn(Optional.of(game));
 
@@ -88,16 +93,18 @@ public class InvoiceServiceTest {
         invoice.setItemId(1);
         invoice.setItemType("Game");
         invoice.setQuantity(5);
+        invoice.setState("CA");
+
 
         when(invoiceRepository.save(any(Invoice.class))).thenAnswer(i -> i.getArguments()[0]);
 
         Invoice savedInvoice = invoiceService.createInvoice(invoice);
 
-        assertEquals(new BigDecimal("20.00"), savedInvoice.getUnitPrice());
-        assertEquals(new BigDecimal("100.00"), savedInvoice.getSubtotal());
-        assertEquals(new BigDecimal("10.00"), savedInvoice.getTax());
-        assertEquals(new BigDecimal("2.00"), savedInvoice.getProcessingFee());
-        assertEquals(new BigDecimal("112.00"), savedInvoice.getTotal());
+        assertEquals(new BigDecimal("1.0"), savedInvoice.getUnitPrice());
+        assertEquals(new BigDecimal("5.0"), savedInvoice.getSubtotal());
+        assertEquals(new BigDecimal("0.50"), savedInvoice.getTax());
+        assertEquals(new BigDecimal("2"), savedInvoice.getProcessingFee());
+        assertEquals(new BigDecimal("7.50"), savedInvoice.getTotal());
     }
 
     @Test
@@ -121,7 +128,7 @@ public class InvoiceServiceTest {
 
         Game game = new Game();
         game.setGameId(1);
-        game.setPrice(20.0);
+        game.setPrice(20.00);
         game.setQuantity(10);
 
         when(gameRepository.findById(1)).thenReturn(Optional.of(game));
